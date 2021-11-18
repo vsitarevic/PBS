@@ -25,10 +25,7 @@ export class ClientsComponent implements OnInit {
 
   getPersonsList(): void {
     this.loading = true;
-
-    //TODO: Filter out admin
     this.personService.getPersonList().then(res => this.clients = res.Response);
-    
     this.loading = false;
   }
 

@@ -12,7 +12,6 @@ export class ClientItemComponent implements OnInit {
 
   @Input() client: Person = {} as Person;
 
-  //canSelect: boolean = false;
   isEdit: boolean = false;
 
   newClientName: string = '';
