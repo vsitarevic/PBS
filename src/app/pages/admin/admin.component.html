@@ -1,0 +1,23 @@
+<div class="flex flex-row justify-around bg-white bg-opacity-50 my-4 p-2">
+  <app-menu-button 
+    [disabled]="mode != 'bikes'"
+    text='bikes'
+    (click)="changeMode('bikes')"
+  ></app-menu-button>
+
+  <app-menu-button 
+    [disabled]="mode != 'docks'"
+    text='docks'
+    (click)="changeMode('docks')"
+  ></app-menu-button>
+
+  <app-menu-button 
+    [disabled]="mode != 'clients'"
+    text='clients'
+    (click)="changeMode('clients')"
+  ></app-menu-button>
+</div>
+
+<app-bikes *ngIf="mode == 'bikes'"></app-bikes>
+<app-docks *ngIf="mode == 'docks'"></app-docks>
+<app-clients *ngIf="mode == 'clients'"></app-clients>

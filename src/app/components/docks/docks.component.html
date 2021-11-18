@@ -1,0 +1,14 @@
+<div class="flex flex-row bg-white bg-opacity-50 my-4 p-2">
+  <input class="mx-auto flex-grow text-center" type="text" [(ngModel)]="search" (input)="searchDocks()" placeholder="SEARCH...">
+</div>
+
+<app-add-dock *ngIf="isAdmin" (submitNewDock)="submitNewDock($event)"></app-add-dock>
+
+<div class="flex flex-wrap bg-white bg-opacity-50 my-4 p-2">
+  <img *ngIf="loading; else items" class="mx-auto" src="/assets/loading.gif" alt="loading...">
+
+  <ng-template #items>
+    <app-dock-item (editDock)="editDock($event)" (removeDock)="removeDock($event)" *ngFor="let dock of docks" (findDock)="findDock($event)" [dock]=dock></app-dock-item>
+    <h2 class="mx-auto" *ngIf="!docks">NO DOCKS!</h2>
+  </ng-template>
+</div>

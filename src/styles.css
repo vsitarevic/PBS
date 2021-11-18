@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import url("https://fonts.googleapis.com/css2?family=Advent+Pro:wght@100;200;300;400;500;600;700&display=swap");
+
+body {
+  margin: 0;
+  background-color: #e4f6ff;
+  font-family: "Advent Pro";
+  font-weight: 700;
+  color: #354147;
+}
+
+input {
+  font-size: 24px;
+}
+
+select {
+  font-size: 26px;
+}
+
+input:focus {
+  outline: none;
+}
+
+select:focus {
+  outline: none;
+}
+
+h1 {
+  font-size: 26px;
+}
+
+h2 {
+  font-size: 24px;
+}

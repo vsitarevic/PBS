@@ -1,0 +1,69 @@
+<div class="flex flex-col bg-white bg-opacity-50 my-4 p-2">
+  <div class="flex flex-row flex-grow">
+    <input class="mx-auto flex-grow text-center" type="text" [(ngModel)]="search" (input)="searchBikes()" placeholder="SEARCH...">
+  </div>
+  
+  <div class="flex flex-row">
+    <input class="mx-auto flex-grow text-center" type="text" [(ngModel)]="searchDock" (input)="searchBikes()" placeholder="DOCK CODE...">
+    <input class="mx-auto flex-grow text-center" type="text" [(ngModel)]="searchClient" (input)="searchBikes()" placeholder="CLIENT CODE...">
+  </div>
+</div>
+
+<app-add-bike *ngIf="isAdmin" (submitNewBike)="submitNewBike($event)"></app-add-bike>
+
+<div class="flex flex-wrap bg-white bg-opacity-50 my-4 p-2">
+  <img *ngIf="loading; else items" class="mx-auto" src="/assets/loading.gif" alt="loading...">
+
+  <ng-template #items>
+    <app-bike-item (editBike)="editBike($event)" (removeBike)="removeBike($event)" (selectBike)="selectBike($event)" (deselectBike)="deselectBike($event)" (setRentDock)="setRentDock($event)" *ngFor="let bicycle of bicycles" [selectedRentDock]=selectedRentDock [bicycle]=bicycle></app-bike-item>
+    <h2 class="mx-auto" *ngIf="!bicycles">NO BIKES!</h2>
+  </ng-template>
+</div>
+
+<div *ngIf="!selectedClient && !isAdmin" class="flex flex-col bg-white bg-opacity-50 my-4 p-2">
+  <div class="flex flex-row">
+    <h2 class="mx-auto">ENTER YOUR CLIENT CODE</h2>
+  </div>
+
+  <div class="flex flex-row">
+    <input class="mx-auto flex-grow text-center" type="text" [(ngModel)]="clientCode" placeholder="Enter your code">
+    <div (click)="verifyClient()" class="flex flex-col item-btn justify-center bg-teal text-white text-center cursor-pointer px-3">
+      <h2>SUBMIT</h2>
+    </div>
+  </div>
+
+  <div class="flex flex-row">
+    <h2 *ngIf="clientValidateError" class="mx-auto text-red shakeit">{{ clientValidateError }}</h2>
+  </div>
+</div>
+
+<div *ngIf="selectedClient && !isAdmin" class="flex flex-col bg-white bg-opacity-50 my-4 p-2">
+
+  <div *ngIf="selectedClient.BicycleCount == 0" (click)="rentBikes()" class="flex flex-col item-btn justify-center bg-teal text-white text-center cursor-pointer px-3" [ngClass]="selectedBicycles.length == 0 ? 'disabled' : ''">
+    <h2>START PEDALING</h2>
+  </div>
+
+  <div *ngIf="selectedClient.BicycleCount != 0 && dockValidateError != 'Dock Available!'">
+    <div class="flex flex-row">
+      <h2 class="mx-auto">ENTER DOCK CODE</h2>
+    </div>
+  
+    <div class="flex flex-row">
+      <input class="mx-auto flex-grow text-center" type="text" [(ngModel)]="dockCode" placeholder="Enter your code">
+      <div (click)="verifyDock()" class="flex flex-col item-btn justify-center bg-teal text-white text-center cursor-pointer px-3">
+        <h2>SUBMIT</h2>
+      </div>
+
+    </div>
+  
+    <div class="flex flex-row">
+      <h2 *ngIf="dockValidateError" class="mx-auto text-red shakeit">{{ dockValidateError }}</h2>
+    </div>
+  </div>
+
+  <div *ngIf="dockValidateError == 'Dock Available!'" (click)="returnBikes()" class="flex flex-col item-btn justify-center bg-teal text-white text-center cursor-pointer px-3">
+    <h2>RETURN BIKES TO DOCK NUMBER: {{ dockCode }}</h2>
+  </div>
+  
+</div>
+

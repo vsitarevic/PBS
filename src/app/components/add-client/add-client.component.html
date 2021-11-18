@@ -1,0 +1,56 @@
+<div class="flex flex-col lg:flex-row bg-white bg-opacity-50 p-2">
+  <div class="flex flex-col flex-grow text-center mx-2">
+    <h2>NEW CLIENT CODE</h2>
+    <input class="text-center" type="number" [(ngModel)]="newClientCode" min="1000" max="9999">
+  </div>
+
+  <div class="flex flex-col flex-grow text-center mx-2">
+    <h2>NEW CLIENT NAME</h2>
+    <input class="text-center" type="text" [(ngModel)]="newClientName" placeholder="John">
+  </div>
+
+  <div class="flex flex-col flex-grow text-center mx-2">
+    <h2>NEW CLIENT SURNAME</h2>
+    <input class="text-center" type="text" [(ngModel)]="newClientSurname" placeholder="Doe">
+  </div>
+</div>
+
+<div class="flex flex-col lg:flex-row bg-white bg-opacity-50 p-2">
+  <div class="flex flex-col flex-grow text-center mx-2">
+    <h2>NEW CLIENT STATE</h2>
+    <input class="text-center" type="text" [(ngModel)]="newClientState" placeholder="STATE">
+  </div>
+
+  <div class="flex flex-col flex-grow text-center mx-2">
+    <h2>NEW CLIENT CITY</h2>
+    <input class="text-center" type="text" [(ngModel)]="newClientCity" placeholder="CITY">
+  </div>
+
+  <div class="flex flex-col flex-grow text-center mx-2">
+    <h2>NEW CLIENT ADDRESS</h2>
+    <input class="text-center" type="text" [(ngModel)]="newClientAddress" placeholder="ADDRESS">
+  </div>
+</div>
+
+<div class="flex flex-col lg:flex-row bg-white bg-opacity-50 p-2">
+  <div class="flex flex-col flex-grow text-center mx-2">
+    <h2>NEW CLIENT EMAIL</h2>
+    <input class="text-center" type="text" [(ngModel)]="newClientEmail" placeholder="johndoe@email.com">
+  </div>
+
+  <div class="flex flex-col flex-grow text-center mx-2">
+    <h2>NEW CLIENT MOBILE NUMBER</h2>
+    <input class="text-center" type="text" [(ngModel)]="newClientMobileNumber" placeholder="911">
+  </div>
+
+  <div class="flex flex-col flex-grow text-center mx-2">
+    <h2>NEW BIKE COUNT</h2>
+    <input class="text-center" type="number" [(ngModel)]="newBicycleCount" min="0" max="50">
+  </div>
+</div>
+
+<div class="flex flex-col bg-white bg-opacity-50 p-2">
+  <div (click)="submit()" class="flex flex-col justify-center text-center mx-2 p-2 bg-teal">
+    <h2>SUBMIT</h2>
+  </div>
+</div>

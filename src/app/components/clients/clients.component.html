@@ -1,0 +1,14 @@
+<div class="flex flex-row bg-white bg-opacity-50 my-4 p-2">
+  <input class="mx-auto flex-grow text-center" type="text" [(ngModel)]="search" placeholder="SEARCH...">
+</div>
+
+<app-add-client (submitNewClient)="submitNewClient($event)"></app-add-client>
+
+<div class="flex flex-wrap bg-white bg-opacity-50 my-4 p-2">
+  <img *ngIf="loading; else items" class="mx-auto" src="/assets/loading.gif" alt="loading...">
+
+  <ng-template #items>
+    <app-client-item (editClient)="editClient($event)" (removeClient)="removeClient($event)" *ngFor="let client of clients" [client]=client></app-client-item>
+    <h2 class="mx-auto" *ngIf="!clients">NO CLIENTS!</h2>
+  </ng-template>
+</div>

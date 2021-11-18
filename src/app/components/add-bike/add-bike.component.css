@@ -1,0 +1,7 @@
+.bg-teal {
+  background-color: #9be7e9;
+}
+.bg-teal:hover {
+  color: #ffffff;
+  cursor: pointer;
+}

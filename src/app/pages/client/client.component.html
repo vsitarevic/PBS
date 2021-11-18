@@ -1,0 +1,16 @@
+<div class="flex flex-row justify-around bg-white bg-opacity-50 my-4 p-2">
+  <app-menu-button 
+    [disabled]="mode != 'bikes'"
+    text='bikes'
+    (click)="changeMode('bikes')"
+  ></app-menu-button>
+
+  <app-menu-button 
+    [disabled]="mode != 'docks'"
+    text='docks'
+    (click)="changeMode('docks')"
+  ></app-menu-button>
+</div>
+
+<app-bikes [searchDock]=searchDockParam *ngIf="mode == 'bikes'"></app-bikes>
+<app-docks (changeToBikes)="changeToBikes($event)" *ngIf="mode == 'docks'"></app-docks>

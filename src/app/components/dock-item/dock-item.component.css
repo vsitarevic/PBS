@@ -1,0 +1,41 @@
+:host.dock-item {
+  width: 400px;
+  margin-bottom: 1rem;
+}
+:host.item-outline {
+  outline: 2px solid #9be7e9;
+}
+.bg-teal {
+  background-color: #9be7e9;
+}
+.bg-orange {
+  background-color: #ffdebc;
+}
+.item-selected {
+  color: #fff;
+  background-color: #9be7e9;
+}
+.item-btn-selected {
+  width: 80px;
+  background-color: #fff;
+  color: #9be7e9;
+}
+.item-btn-selected:hover {
+  color: #354147;
+}
+.item-btn {
+  width: 80px;
+}
+.item-btn:hover {
+  background-color: #68e6eb;
+}
+.icon-size {
+  font-size: 28px;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.text-red {
+  color: #fc6952;
+}

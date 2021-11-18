@@ -1,0 +1,26 @@
+<div class="flex flex-col lg:flex-row bg-white bg-opacity-50 my-4 p-2">
+  <div class="flex flex-col flex-grow text-center mx-2">
+    <h2>NEW BIKE CODE</h2>
+    <input class="text-center" type="number" [(ngModel)]="newBikeCode" min="1000" max="9999">
+  </div>
+
+  <div class="flex flex-col flex-grow text-center mx-2">
+    <h2>NEW BIKE COLOR</h2>
+    <input class="text-center" type="text" [(ngModel)]="newBikeColor" placeholder="RED">
+  </div>
+
+  <div class="flex flex-col flex-grow text-center mx-2">
+    <h2>NEW BIKE STATUS</h2>
+    <select class="text-center" [(ngModel)]="newBikeStatus">
+      <option *ngFor="let status of statuses">{{ status.replace("_", " ") }}</option>
+    </select>
+  </div>
+
+  <div class="flex flex-col flex-grow text-center mx-2">
+    <h2>NEW BIKE DOCK</h2>
+    <input class="text-center" type="number" [(ngModel)]="newBikeDock" min="1000" max="9999">
+  </div>
+  <div (click)="submit()" class="flex flex-col justify-center text-center mx-2 p-2 bg-teal">
+    <h2>SUBMIT</h2>
+  </div>
+</div>

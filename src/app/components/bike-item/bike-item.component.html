@@ -1,0 +1,37 @@
+<div class="flex flex-col flex-grow p-4" [ngClass]="{'item-selected': selected}">
+  <h2>CODE: {{ bicycle.Code }}</h2>
+
+  <div class="flex flex-row">
+    <h2>COLOR: {{ isEdit ? null : bicycle.Color }}</h2>
+    <input class="ml-2" *ngIf="isEdit" type="string" [(ngModel)]="newBikeColor">
+  </div>
+
+  <div class="flex flex-row">
+    <h2 [ngClass]="deleteWarning ? 'shakeit text-red' : ''">STATUS: {{ isEdit ? null : bicycle.Status.replace("_", " ") }}</h2>
+
+    <select *ngIf="isEdit" [(ngModel)]="newBikeStatus">
+      <option *ngFor="let status of statuses">{{ status.replace("_", " ") }}</option>
+    </select>
+  </div>
+
+  <div *ngIf="bicycle.Dock" class="flex flex-row">
+    <h2>DOCK: {{ isEdit ? null : bicycle.Dock }}</h2>
+    <input *ngIf="isEdit" type="number" [(ngModel)]="newBikeDock" min="1000" max="9999">
+  </div>
+
+  <h2 *ngIf="bicycle.Client">CLIENT: {{ bicycle.Client }}</h2>
+</div>
+
+<div *ngIf="bicycle.Dock && !isAdmin" (click)="toggleSelect()" class="flex flex-col justify-center bg-teal text-white text-center cursor-pointer px-3" [ngClass]="{'item-btn-selected': selected, 'item-btn': !selected}">
+  <h2 *ngIf="!selected">RENT</h2>
+  <mat-icon class="mx-auto icon-size" *ngIf="selected">done</mat-icon>
+</div>
+<div *ngIf="bicycle.Client && !isAdmin" class="flex flex-col item-btn justify-center bg-orange text-white text-center px-3">
+  <h2>BUSY</h2>
+</div>
+
+<div *ngIf="isAdmin" class="flex flex-col justify-between text-white text-center mx-auto">
+  <div (click)="toggleEdit()" class="flex flex-col justify-center flex-grow cursor-pointer px-3" [ngClass]="isEdit ? 'bg-orange' : 'bg-teal'"><mat-icon class="icon-size">{{isEdit ? 'close' : 'edit'}}</mat-icon></div>
+  <div *ngIf="isEdit" (click)="submitEditBike()" class="flex flex-col justify-center flex-grow bg-teal cursor-pointer px-3"><mat-icon class="icon-size">done</mat-icon></div>
+  <div *ngIf="!isEdit" (click)="submitRemoveBike()" class="flex flex-col justify-center flex-grow bg-orange cursor-pointer px-3"><mat-icon class="icon-size">delete</mat-icon></div>
+</div>

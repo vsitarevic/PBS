@@ -1,0 +1,46 @@
+<div class="flex flex-col flex-grow p-4">
+  <h2>CODE: {{ client.Code }}</h2>
+
+  <div class="flex flex-row">
+    <h2>NAME: {{ isEdit ? null : client.Name }}</h2>
+    <input class="ml-2" *ngIf="isEdit" type="string" [(ngModel)]="newClientName">
+  </div>
+
+  <div class="flex flex-row">
+    <h2>SURNAME: {{ isEdit ? null : client.Surname }}</h2>
+    <input class="ml-2" *ngIf="isEdit" type="string" [(ngModel)]="newClientSurname">
+  </div>
+
+  <div class="flex flex-row">
+    <h2>STATE: {{ isEdit ? null : client.State }}</h2>
+    <input class="ml-2" *ngIf="isEdit" type="string" [(ngModel)]="newClientState">
+  </div>
+
+  <div class="flex flex-row">
+    <h2>CITY: {{ isEdit ? null : client.City }}</h2>
+    <input class="ml-2" *ngIf="isEdit" type="string" [(ngModel)]="newClientCity">
+  </div>
+
+  <div class="flex flex-row">
+    <h2>ADDRESS: {{ isEdit ? null : client.Address }}</h2>
+    <input class="ml-2" *ngIf="isEdit" type="string" [(ngModel)]="newClientAddress">
+  </div>
+
+  <div class="flex flex-row">
+    <h2>EMAIL: {{ isEdit ? null : client.Email }}</h2>
+    <input class="ml-2" *ngIf="isEdit" type="string" [(ngModel)]="newClientEmail">
+  </div>
+
+  <div class="flex flex-row">
+    <h2>MOBILE: {{ isEdit ? null : client.MobileNumber }}</h2>
+    <input class="ml-2" *ngIf="isEdit" type="string" [(ngModel)]="newClientMobileNumber">
+  </div>
+
+  <h2>BIKE COUNT: {{ client.BicycleCount }}</h2>
+</div>
+
+<div class="flex flex-col justify-between text-white text-center mx-auto">
+  <div (click)="toggleEdit()" class="flex flex-col justify-center flex-grow cursor-pointer px-3" [ngClass]="isEdit ? 'bg-orange' : 'bg-teal'"><mat-icon class="icon-size">{{isEdit ? 'close' : 'edit'}}</mat-icon></div>
+  <div *ngIf="isEdit" (click)="submitEditClient()" class="flex flex-col justify-center flex-grow bg-teal cursor-pointer px-3"><mat-icon class="icon-size">done</mat-icon></div>
+  <div *ngIf="!isEdit" (click)="submitRemoveClient()" class="flex flex-col justify-center flex-grow bg-orange cursor-pointer px-3"><mat-icon class="icon-size">delete</mat-icon></div>
+</div>
